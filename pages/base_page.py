@@ -37,3 +37,8 @@ class BasePage:
 
     def go_to_element(self, element):
         self.driver.execute_script("argument[0].scrollIntoView();", element)  # Скролить до элемента
+
+    def text_to_be_present(self, locator, timeout=5):
+        return WebDriverWait(self.driver, timeout).until(
+            EC.text_to_be_present_in_element(locator))
+
